@@ -1050,17 +1050,16 @@ const questions = [
 for(let i=121; i<=150; i++) {
     questions.push({
         id: i, 
-        category: (i%2===0)? 'Ch3' : 'Ch4',
+        category: (i % 2 === 0) ? 'Ch3' : 'Ch4',
         text: `Review Question ${i}: What is the output?`,
-        code: (i%2===0)? `int x=${i%5}; System.out.println(x++ + ++x);` : `int[] a=new int[${i%4+2}]; System.out.println(a.length);`,
+        code: (i % 2 === 0) ? `int x=${i%5}; \nSystem.out.println(x++ + ++x);` : `int[] a = new int[${i%4+2}]; \nSystem.out.println(a.length);`,
         options: ["Varies based on calculation", "Compiler Error", "Runtime Error", "Correct Value"],
         answer: 0, 
-                explanation: "سؤال تدريبي إضافي يعتمد على فهم قواعد الـ Increment وحساب طول المصفوفة كما تم شرحه سابقاً."
-    }); // تقفل كائن السؤال
-} // <--- ده القوس اللي كان ناقص عشان يقفل الـ for loop
+        explanation: "سؤال تدريبي إضافي يعتمد على فهم قواعد الـ Increment وحساب طول المصفوفة كما تم شرحه سابقاً."
+    });
+}
 
-]; // <--- ده القوس اللي بيقفل مصفوفة الأسئلة بالكامل
-
+// تم حذف الأقواس الزائدة التي كانت تسبب المشكلة هنا
 
 const quizContainer = document.getElementById('quiz-container');
 const totalQElement = document.getElementById('total-q');
@@ -1108,7 +1107,6 @@ function loadQuestions(filter = 'all') {
     });
 }
 
-
 function checkAnswer(qId, correctIndex) {
     const selected = document.querySelector(`input[name="q${qId}"]:checked`);
     const feedbackDiv = document.getElementById(`feedback-${qId}`);
@@ -1145,7 +1143,6 @@ function checkAnswer(qId, correctIndex) {
     options.forEach(opt => opt.disabled = true);
 }
 
-
 function filterQuestions(cat) {
     loadQuestions(cat);
 }
@@ -1153,11 +1150,6 @@ function filterQuestions(cat) {
 // Initial Load
 loadQuestions();
 
-</script>
-
-</body>
-
-</html>
 
 
 
