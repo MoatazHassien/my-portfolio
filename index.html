@@ -34,10 +34,19 @@
 <body>
 
 <div class="container">
-    <h1>Java Programming I - Exam Simulator</h1>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h1>Java Programming I - Exam Simulator</h1>
+        <p style="color: #3498db; font-weight: bold; margin-top: -10px;">By: Eng/Moataz Hassien</p>
+        
+        <div style="font-size: 1.2em; background: #2c3e50; color: white; display: inline-block; padding: 8px 20px; border-radius: 8px;">
+            Your Score: <span id="user-score" style="color: #2ecc71;">0</span> / <span id="answered-q">0</span>
+        </div>
+    </div>
+
     <div class="stats">
         Total Questions: <span id="total-q">150</span> | Focus: Ch3 (Loops/Conditions) & Ch4 (Arrays)
     </div>
+
     <div style="text-align: center; margin-bottom: 20px;">
         <button class="filter-btn" onclick="filterQuestions('all')">Show All</button>
         <button class="filter-btn" onclick="filterQuestions('Ch1-2')">Ch 1 & 2 Only</button>
@@ -51,7 +60,10 @@
 
 <script>
 // The Database of 150 Questions based on Uploaded PDFs
-const questions = [
+const questions = [let currentScore = 0;
+let totalAnswered = 0;
+let answeredQuestions = new Set(); // لمنع تكرار النقاط لنفس السؤال
+
     // =================================================================================
     // CHAPTER 1 & 2 (Basics, Data Types, Math, Casting) - ~50 Questions
     // =================================================================================
@@ -1092,6 +1104,10 @@ function loadQuestions(filter = 'all') {
     });
 }
 
+function let currentScore = 0;
+let totalAnswered = 0;
+let answeredQuestions = new Set();
+
 function checkAnswer(qId, correctIndex) {
     const selected = document.querySelector(`input[name="q${qId}"]:checked`);
     const feedbackDiv = document.getElementById(`feedback-${qId}`);
@@ -1102,18 +1118,32 @@ function checkAnswer(qId, correctIndex) {
         return;
     }
 
+    if (answeredQuestions.has(qId)) {
+        alert("You already answered this question!");
+        return;
+    }
+
     feedbackDiv.style.display = 'block';
     const userVal = parseInt(selected.value);
+    
+    totalAnswered++;
+    document.getElementById('answered-q').textContent = totalAnswered;
+    answeredQuestions.add(qId);
 
     if (userVal === correctIndex) {
         feedbackDiv.className = 'feedback correct';
         msgDiv.innerHTML = '<strong>✅ Correct!</strong>';
+        currentScore++;
+        document.getElementById('user-score').textContent = currentScore;
     } else {
         feedbackDiv.className = 'feedback wrong';
-        msgDiv.innerHTML = '<strong>❌ Wrong!</strong> The correct answer is: ' + 
-                           document.querySelectorAll(`input[name="q${qId}"]`)[correctIndex].parentNode.textContent.trim();
+        msgDiv.innerHTML = '<strong>❌ Wrong!</strong>';
     }
+
+    const options = document.querySelectorAll(`input[name="q${qId}"]`);
+    options.forEach(opt => opt.disabled = true);
 }
+
 
 function filterQuestions(cat) {
     loadQuestions(cat);
@@ -1125,4 +1155,5 @@ loadQuestions();
 </script>
 
 </body>
+
 </html>
