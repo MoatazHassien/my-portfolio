@@ -60,10 +60,11 @@
 
 <script>
 // The Database of 150 Questions based on Uploaded PDFs
-const questions = [let currentScore = 0;
+  let currentScore = 0;
 let totalAnswered = 0;
-let answeredQuestions = new Set(); // لمنع تكرار النقاط لنفس السؤال
-
+let answeredQuestions = new Set();
+  
+const questions = [
     // =================================================================================
     // CHAPTER 1 & 2 (Basics, Data Types, Math, Casting) - ~50 Questions
     // =================================================================================
@@ -1055,8 +1056,7 @@ for(let i=121; i<=150; i++) {
         options: ["Varies based on calculation", "Compiler Error", "Runtime Error", "Correct Value"],
         answer: 0, 
         explanation: "سؤال تدريبي إضافي يعتمد على فهم قواعد الـ Increment وحساب طول المصفوفة كما تم شرحه سابقاً."
-    });
-}
+]; // هذا هو السطر الذي يغلق مصفوفة الأسئلة
 
 const quizContainer = document.getElementById('quiz-container');
 const totalQElement = document.getElementById('total-q');
@@ -1104,9 +1104,6 @@ function loadQuestions(filter = 'all') {
     });
 }
 
-function let currentScore = 0;
-let totalAnswered = 0;
-let answeredQuestions = new Set();
 
 function checkAnswer(qId, correctIndex) {
     const selected = document.querySelector(`input[name="q${qId}"]:checked`);
@@ -1157,3 +1154,4 @@ loadQuestions();
 </body>
 
 </html>
+
