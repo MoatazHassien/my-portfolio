@@ -38,6 +38,10 @@
      <p style="color: #3498db; font-weight: bold; margin-top: -10px;">By: Eng/Moataz Hassien</p>
     <div class="stats">
         Total Questions: <span id="total-q">150</span> | Focus: Ch3 (Loops/Conditions) & Ch4 (Arrays)
+        <footer class="simple-footer">
+    <p>Made with 😎 & ☕ by Eng. Moataz Hassien – Have fun & don't cheat 😜</p>
+    <p>تم إنشاء هذا الدليل لغايات تعليمية &copy; 2026</p>
+</footer>
     </div>
     <div style="text-align: center; margin-bottom: 20px;">
         <button class="filter-btn" onclick="filterQuestions('all')">Show All</button>
@@ -1077,10 +1081,7 @@ function loadQuestions(filter = 'all') {
             <div id="feedback-${q.id}" class="feedback">
                 <div id="msg-${q.id}"></div>
                 <div class="explanation">💡 <strong>Explanation:</strong> ${q.explanation}</div>
-                <footer class="simple-footer">
-    <p>Made with 😎 & ☕ by Eng. Moataz Hassien – Have fun & don't cheat 😜</p>
-    <p>تم إنشاء هذا الدليل لغايات تعليمية &copy; 2026</p>
-</footer>
+            
             </div>
         `;
         quizContainer.appendChild(card);
@@ -1121,6 +1122,7 @@ loadQuestions();
 
 </body>
 </html>
+
 
 
 
