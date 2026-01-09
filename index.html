@@ -1035,17 +1035,7 @@ const questions = [
 
 // Add specific questions from "Exam 2019" and "Final Questions" PDFs to reach 150 virtually
 // Adding a block generator for the remaining logic
-for(let i=121; i<=150; i++) {
-    questions.push({
-        id: i, 
-        category: (i%2===0)? 'Ch3' : 'Ch4',
-        text: `Review Question ${i}: What is the output?`,
-        code: (i%2===0)? `int x=${i%5}; System.out.println(x++ + ++x);` : `int[] a=new int[${i%4+2}]; System.out.println(a.length);`,
-        options: ["Varies based on calculation", "Compiler Error", "Runtime Error", "Correct Value"],
-        answer: 0, 
-        explanation: "سؤال تدريبي إضافي يعتمد على فهم قواعد الـ Increment وحساب طول المصفوفة كما تم شرحه سابقاً."
-    });
-}
+
 
 const quizContainer = document.getElementById('quiz-container');
 const totalQElement = document.getElementById('total-q');
@@ -1127,6 +1117,7 @@ loadQuestions();
 
 </body>
 </html>
+
 
 
 
